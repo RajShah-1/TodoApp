@@ -39,7 +39,7 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		8D3517FA2D48AE6400535B28 /* Exceptions for "FirstProject" folder in "FirstProject" target */ = {
+		8D0EA67C2D497F2F0030206F /* Exceptions for "FirstProject" folder in "FirstProject" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
@@ -52,7 +52,7 @@
 		8DF5DE962D3837B600992514 /* FirstProject */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				8D3517FA2D48AE6400535B28 /* Exceptions for "FirstProject" folder in "FirstProject" target */,
+				8D0EA67C2D497F2F0030206F /* Exceptions for "FirstProject" folder in "FirstProject" target */,
 			);
 			path = FirstProject;
 			sourceTree = "<group>";
