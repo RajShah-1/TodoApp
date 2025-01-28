@@ -75,4 +75,40 @@ class ListViewModel: ObservableObject {
             }
         }
     }
+
+    func deleteItem(item: ItemModel) {
+        if let index = items.firstIndex(where: { $0.id == item.id }) {
+            db.collection(collectionName).document(item.id).delete { error in
+                if let error = error {
+                    print("Error deleting item: \(error.localizedDescription)")
+                }
+            }
+            items.remove(at: index)
+        }
+    }
+
+    func reorderItems(newOrder: [ItemModel]) {
+        // Create a batch to update all items
+        let batch = db.batch()
+        
+        // Update each item with a new timestamp field to maintain order
+        for (_, item) in newOrder.enumerated() {
+            let docRef = db.collection(collectionName).document(item.id)
+            do {
+                try batch.setData(from: item, forDocument: docRef, merge: true)
+            } catch {
+                print("Error preparing batch update: \(error.localizedDescription)")
+            }
+        }
+        
+        // Commit the batch
+        batch.commit { error in
+            if let error = error {
+                print("Error updating order in Firestore: \(error.localizedDescription)")
+            }
+        }
+        
+        // Update local array
+        items = newOrder
+    }
 }
