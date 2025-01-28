@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct ListView: View {
-    @EnvironmentObject var listViewModel: ListViewModel;
+    @EnvironmentObject var listViewModel: ListViewModel
+    @EnvironmentObject var userViewModel: UserViewModel
 
     var body: some View {
         VStack{
@@ -41,6 +42,9 @@ struct ListView: View {
             leading: EditButton(),
             trailing: NavigationLink("Add", destination: AddView())
         )
+        .onAppear {
+            listViewModel.updateCollectionName(from: userViewModel)
+        }
     }
 }
 

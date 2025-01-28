@@ -10,12 +10,19 @@ import FirebaseFirestore
 
 class ListViewModel: ObservableObject {
     @Published var items: [ItemModel] = []
+    
     private let db = Firestore.firestore()
-    private let collectionName = "items"
+    var collectionName: String = "unknown-user"
 
     init() {
         fetchItems()
     }
+
+    func updateCollectionName(from: UserViewModel) {
+        self.collectionName = from.userID?.profile?.email ?? "unknown-user"
+        fetchItems()
+    }
+        
 
     func fetchItems() {
         db.collection(collectionName).getDocuments { snapshot, error in

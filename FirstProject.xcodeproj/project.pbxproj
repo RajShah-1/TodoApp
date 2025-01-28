@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		8D3517E32D488FE400535B28 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 8D3517E22D488FE400535B28 /* GoogleSignIn */; };
 		8D3517E52D488FE400535B28 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 8D3517E42D488FE400535B28 /* GoogleSignInSwift */; };
+		8D3517F02D4898D400535B28 /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = 8D3517EF2D4898D300535B28 /* FirebaseCore */; };
 		8D8836612D488E560084858F /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 8D8836602D488E560084858F /* FirebaseAuth */; };
 		8DC4D6552D4203E40022B9C3 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 8DC4D6542D4203E40022B9C3 /* FirebaseFirestore */; };
 		8DC4D6572D4203E40022B9C3 /* FirebaseFirestoreCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 8DC4D6562D4203E40022B9C3 /* FirebaseFirestoreCombine-Community */; };
@@ -37,9 +38,22 @@
 		8DF5DEAE2D3837B800992514 /* FirstProjectUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FirstProjectUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		8D3517FA2D48AE6400535B28 /* Exceptions for "FirstProject" folder in "FirstProject" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 8DF5DE932D3837B600992514 /* FirstProject */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		8DF5DE962D3837B600992514 /* FirstProject */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				8D3517FA2D48AE6400535B28 /* Exceptions for "FirstProject" folder in "FirstProject" target */,
+			);
 			path = FirstProject;
 			sourceTree = "<group>";
 		};
@@ -64,6 +78,7 @@
 				8DC4D6552D4203E40022B9C3 /* FirebaseFirestore in Frameworks */,
 				8D3517E32D488FE400535B28 /* GoogleSignIn in Frameworks */,
 				8D8836612D488E560084858F /* FirebaseAuth in Frameworks */,
+				8D3517F02D4898D400535B28 /* FirebaseCore in Frameworks */,
 				8DC4D6572D4203E40022B9C3 /* FirebaseFirestoreCombine-Community in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -138,6 +153,7 @@
 				8D8836602D488E560084858F /* FirebaseAuth */,
 				8D3517E22D488FE400535B28 /* GoogleSignIn */,
 				8D3517E42D488FE400535B28 /* GoogleSignInSwift */,
+				8D3517EF2D4898D300535B28 /* FirebaseCore */,
 			);
 			productName = FirstProject;
 			productReference = 8DF5DE942D3837B600992514 /* FirstProject.app */;
@@ -429,6 +445,7 @@
 				DEVELOPMENT_TEAM = 72NJHJ4A3Y;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FirstProject/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -459,6 +476,7 @@
 				DEVELOPMENT_TEAM = 72NJHJ4A3Y;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FirstProject/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -616,6 +634,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8D3517E12D488FE400535B28 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
 			productName = GoogleSignInSwift;
+		};
+		8D3517EF2D4898D300535B28 /* FirebaseCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8DC4D6532D4203E40022B9C3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCore;
 		};
 		8D8836602D488E560084858F /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
