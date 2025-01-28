@@ -1,0 +1,38 @@
+//
+//  FirstProjectApp.swift
+//  FirstProject
+//
+//  Created by Raj Shah on 1/15/25.
+//
+
+import SwiftUI
+import FirebaseCore
+
+
+class AppDelegate: NSObject, UIApplicationDelegate {
+  func application(_ application: UIApplication,
+                   didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+    FirebaseApp.configure()
+
+    return true
+  }
+}
+
+/**
+ MVVM: Model, View, ViewModel (like MVC)
+ */
+@main
+struct FirstProjectApp: App {    
+    // register app delegate for Firebase setup
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+
+    @StateObject var listViewModel: ListViewModel = ListViewModel();
+    var body: some Scene {
+        WindowGroup {
+            NavigationView {
+                ListView()
+            }
+            .environmentObject(listViewModel)
+        }
+    }
+}
