@@ -14,6 +14,21 @@ import UIKit
 class UserViewModel: ObservableObject {
     @Published var userID: GIDGoogleUser? = nil
 
+    init() {
+        restorePreviousSignIn()
+    }
+
+    func restorePreviousSignIn() {
+        GIDSignIn.sharedInstance.restorePreviousSignIn { user, error in
+            if let error = error {
+                print("Error restoring sign-in: \(error.localizedDescription)")
+                return
+            }
+            
+            self.userID = user
+        }
+    }
+
     func signIn() {
         guard let presentingViewController = (UIApplication.shared.connectedScenes.first
                 as? UIWindowScene)?.windows.first?.rootViewController else { return }
