@@ -3,6 +3,8 @@ import SwiftUI
 struct ListView: View {
     @EnvironmentObject var listViewModel: ListViewModel
     @EnvironmentObject var userViewModel: UserViewModel
+    @State private var itemToEdit: ItemModel?
+    @State private var isEditingItem = false
 
     private func filterTodos() -> (active: [ItemModel], completed: [ItemModel]) {
         let active = listViewModel.items.filter { !$0.isCompleted }
@@ -18,6 +20,15 @@ struct ListView: View {
                         withAnimation(.linear) {
                             listViewModel.toggleItem(item: item)
                         }
+                    }
+                    .swipeActions(edge: .leading) {
+                        Button {
+                            itemToEdit = item
+                            isEditingItem = true
+                        } label: {
+                            Label("Edit", systemImage: "pencil")
+                        }
+                        .tint(.blue)
                     }
             }
             .onDelete(perform: { indexSet in
@@ -54,6 +65,15 @@ struct ListView: View {
                             Label("Delete", systemImage: "trash")
                         }
                     }
+                    .swipeActions(edge: .leading) {
+                        Button {
+                            itemToEdit = item
+                            isEditingItem = true
+                        } label: {
+                            Label("Edit", systemImage: "pencil")
+                        }
+                        .tint(.blue)
+                    }
             }
         }
     }
@@ -78,6 +98,16 @@ struct ListView: View {
                     }
                 }
                 .listStyle(InsetGroupedListStyle())
+            }
+        }
+        .sheet(isPresented: $isEditingItem) {
+            if let item = itemToEdit {
+                NavigationView {
+                    EditItemView(item: item) { updatedTitle in
+                        listViewModel.updateItem(item: item, newTitle: updatedTitle)
+                        itemToEdit = nil
+                    }
+                }
             }
         }
         .navigationTitle("Todo List 📝")
