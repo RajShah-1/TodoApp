@@ -111,4 +111,19 @@ class ListViewModel: ObservableObject {
         // Update local array
         items = newOrder
     }
+
+    func updateItem(item: ItemModel, newTitle: String) {
+        if let index = items.firstIndex(where: { $0.id == item.id }) {
+            let updatedItem = ItemModel(id: item.id, title: newTitle, isCompleted: item.isCompleted)
+            
+            // Update in Firestore
+            do {
+                try db.collection(collectionName).document(updatedItem.id).setData(from: updatedItem)
+                // Only update local array if Firestore update succeeds
+                items[index] = updatedItem
+            } catch {
+                print("Error updating item: \(error.localizedDescription)")
+            }
+        }
+    }
 }
